@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Blog{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>{% if name %}
+    Your file name is {{ name }}
+    {% else %}
+    No file name specified
+    {% endif %}!</h1>
+</div>
+{{ wtf.quick_form(form) }}
+<p>The local date and time is {{ moment(current_time).format('LLL') }}.</p>
+<p>That was {{ moment(current_time).fromNow(refresh=True) }}.
+{% endblock %}
